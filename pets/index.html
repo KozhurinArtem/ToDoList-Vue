@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do List</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container" id="app" >
+        <div class="header">
+            <h1 class="title">My to do List</h1>
+            <div class="menu">
+                <ul class="menu__list">
+                    <li class="list__item">Задачи</li>
+                    <li class="list__item">Заметки</li>
+                    <li class="list__item">Даты</li>
+                </ul>
+            </div>
+        </div>
+        <div class="content__wrapper">
+            
+            <div class="content__header">
+
+            <input type="text" class="input"
+            v-bind:value="valueInput"
+            v-on:input="handleInput"
+            v-on:keypress.enter="addTask"
+            >
+            <button class="btn" v-on:click="addTask" > Добавить</button>
+        </div>
+
+        <h2>
+            <span>To Do</span>
+            <span class="mask-num">{{counter}}</span>
+          </h2>
+          <ul class="mask-list">
+            <li          
+             v-for="(mask, index) in needDoList"
+            :key="mask.id">
+                <label>
+                    <input class="check-box" type="checkbox">
+                    <span class="check-style"></span>
+                    <span> {{mask.title}}</span>
+                    
+                </label>
+   
+              <button class=" btn btn-list">Remove</button>
+            </li>
+          </ul>
+          <h2>
+            <span>Done</span>
+            <span class="mask-num">0</span>
+          </h2>
+          <ul class="mask-list complete-list">
+            <li>
+                <label>
+                <input class="check-box" type="checkbox"  checked>
+                <span class="check-style"></span>
+                <span>{{mask.title}} </span>
+            </label>
+
+              <button class="btn btn-list">Remove</button>
+            </li>
+          </ul>
+        </div>
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="./js/app.js"></script>
+</body>
+</html>
