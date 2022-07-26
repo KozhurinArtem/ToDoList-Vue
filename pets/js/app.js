@@ -1,25 +1,61 @@
-const App = {
+
+    Vue.createApp({
     data(){
         return{
-            counter: 0,
+            openClose: 'Развернуть',
+            add:'Добавить',
+            taskList:[],
             valueInput: '',
-            needDoList: []
-        }
+            needDoList: [],
+            completeList: [],
+            oneHidden: 'hidden',
+            twoHidden: '',
+
+            
+
+        };
     },
     methods: {
-        handlyInput(event) {
+        handleInput(event){
             this.valueInput = event.target.value;
         },
-        addTask () {
-            if(this.valueInput === '') { return };
+        addTask() {
+            if(this.valueInput === ''){return};
             this.needDoList.push({
                 title: this.valueInput,
                 id: Math.random()
             });
             this.valueInput = '';
-        }
+        },
+        doCheck(index, type) {
+            if(type === 'need') {
+                const completeMask = this.needDoList.splice(index, 1);
+                this.completeList.push(...completeMask);
+            } else {
+                const noCompleteMask = this.completeList.splice(index, 1);
+                this.needDoList.push(...noCompleteMask);
+            }
+        },
+        removeMask(index, type) {
+            const toDoList = type === 'need' ? this.needDoList : this.completeList;
+            toDoList.splice(index, 1);
+        },
+        openPageOne(){
+            if(this.oneHidden === 'hidden') {
+                this.oneHidden = ''
+                this.twoHidden = 'hidden'
+                this.openClose ='Cвернуть'
+            } else {
+                this.oneHidden = 'hidden'
+                this.twoHidden = ''
+
+            }
+
+    },
+    addPage() {
+        this.taskList.push({
+            id:Math.random
+        })
     }
 }
-
-
-Vue.createApp(App).mount('#app')
+    }).mount('#app')

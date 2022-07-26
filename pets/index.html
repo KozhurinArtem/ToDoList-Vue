@@ -16,64 +16,76 @@
         <div class="header">
             <h1 class="title">My to do List</h1>
             <div class="menu">
-                <ul class="menu__list">
-                    <li class="list__item">Задачи</li>
-                    <li class="list__item">Заметки</li>
-                    <li class="list__item">Даты</li>
+              <ul class="menu__list">
+                <li class="list__item"  @click="">{{add}}</li>
+                  <li class="list__item" v-bind:class="oneHidden"  @click="openPageOne">{{openClose}}</li>
+
+
                 </ul>
             </div>
         </div>
-        <div class="content__wrapper">
+        <ul class="content__list">
+          <li>
+        <div class="content__wrapper" v-bind:class="oneHidden">
             
-            <div class="content__header">
+            <div class="content__header" >
 
             <input type="text" class="input"
             v-bind:value="valueInput"
             v-on:input="handleInput"
             v-on:keypress.enter="addTask"
             >
-            <button class="btn" v-on:click="addTask" > Добавить</button>
+            <button class="btn" v-on:click="addTask">Добавить</button>
         </div>
 
         <h2>
-            <span>To Do</span>
-            <span class="mask-num">{{counter}}</span>
+            <span>Мои задачи</span>
+            <span class="mask-num">{{needDoList.length}}</span>
           </h2>
           <ul class="mask-list">
-            <li          
-             v-for="(mask, index) in needDoList"
-            :key="mask.id">
+            <li 
+            v-for="(mask, index) in needDoList"
+            :key="mask.id"
+            >
                 <label>
-                    <input class="check-box" type="checkbox">
+                    <input class="check-box" type="checkbox" v-on:change="doCheck( index, 'need')">
                     <span class="check-style"></span>
-                    <span> {{mask.title}}</span>
+                    <span>{{mask.title}}</span>
                     
                 </label>
    
-              <button class=" btn btn-list">Remove</button>
+              <button class=" btn btn-list" v-on:click="removeMask(index, 'need')">Удалить</button>
             </li>
           </ul>
           <h2>
-            <span>Done</span>
-            <span class="mask-num">0</span>
+            <span>Выполнено</span>
+            <span class="mask-num">{{completeList.length}}</span>
           </h2>
           <ul class="mask-list complete-list">
-            <li>
+            <li 
+            v-for="(mask, index) in completeList" 
+            :key="mask.id"
+            >
                 <label>
-                <input class="check-box" type="checkbox"  checked>
+                <input class="check-box" type="checkbox"  checked v-on:change="doCheck( index, 'complete')">
                 <span class="check-style"></span>
-                <span>{{mask.title}} </span>
+                <span>{{mask.title}}</span>
             </label>
 
-              <button class="btn btn-list">Remove</button>
+              <button class="btn btn-list" v-on:click="removeMask(index, 'complete')">Удалить</button>
             </li>
           </ul>
         </div>
+      </li></ul>
+        <div class="content__min" @click="openPageOne" v-bind:class="twoHidden">
+            <div class="span-min"> Задачи </div>
+      </div>
     </div>
 
 
 
     <script src="https://unpkg.com/vue@next"></script>
     <script src="./js/app.js"></script>
+
 </body>
 </html>
