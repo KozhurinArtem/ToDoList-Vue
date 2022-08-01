@@ -1,48 +1,23 @@
 *,
 *::before,
-*::after{
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-a{
+a {
     color: white;
     text-decoration: none;
 }
 
-.container{
-    max-width: 1170px;
+.container {
+    width: 1170px;
+    height: 100vh;
     margin-top: 50px;
-    margin-left: 50px;
+    margin-left: 200px;
+
     font-family: 'Roboto', sans-serif;
-}
-.open{
-position: absolute;
- top:50vh;
- left:0;
- right: 0;
- text-align: center;
-
- 
-}
-
-.open-up{
-    position: absolute;
-    top:0;
-    left: 1000px;
-    right: 0;
-    text-align: center;
-    align-items: end;
-}
-
-.transition{
-    position: absolute;
-    top:0;
-    left:0;
-    right: 10vh;
-    text-align: center;
-
 }
 
 [v-cloak] {
@@ -52,7 +27,7 @@ position: absolute;
 
 
 
-.btn{
+.btn {
     position: relative;
 
     padding: 20px 30px;
@@ -60,16 +35,18 @@ position: absolute;
     margin: 10px;
     display: inline-block;
     text-decoration: none;
-    color:white;
-    letter-spacing:  2px;
+    color: white;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    transition: .5s;
+    transition: .8s;
     overflow: hidden;
 }
 
 
 
-.btn:hover{
+
+
+.btn:hover {
     color: rgb(32, 53, 63);
 }
 
@@ -80,43 +57,178 @@ position: absolute;
     height: 0px;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    background:white;
-    transition: width .5s, height .5s;
+    background: white;
+    transition: width .8s, height .8s;
     z-index: -1;
 }
 
-.btn:hover span{
+.btn:hover span {
     width: 600px;
     height: 600px;
 }
-.content{
+
+.btn-s {
+    padding: 10.5px 30px;
+}
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.open {
+    /* position: absolute; */
+    margin-top: 50vh;
+    max-height: 200px;
+    text-align: center;
+    transition: .9s;
+
+
+
+}
+
+.nav {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transition: .9s;
+    /* font-size: 24px; */
+    /* position: absolute; */
+}
+
+
+
+.content {
     position: relative;
 }
 
-.logo{
-position: absolute;
-display: flex;
-font-size: 120%;
-letter-spacing: 5px;
-/* display: none; */
-transition:  .5s;
+.logo {
+    /* position: absolute; */
+    display: flex;
+    font-size: 120%;
+    letter-spacing: 5px;
+    /* display: none; */
+    transition: .5s;
 
 }
 
 
 
-.hidden{
-    opacity: 0;
+.hidden {
+    display: none;
+}
+
+.f {
+    display: none;
+}
+
+.s {
+    display: none;
+
+}
+.openHidden, .exitHidden, .userName, .table{
+    display: none;
 }
 
 
-
-.content__inner{
-    position: absolute;
-    top:70vh;
-    left:0;
-    right: 0;
+.content__inner {
+    margin-top: -200px;
     text-align: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.90);
+    ;
+    color: #000;
+    min-height: 200px;
+    border-radius: 20px;
+    box-shadow: 15px 15px 15px rgb(58, 57, 57);
+    padding-top: 20px;
+}
+
+.input {
+    min-width: 80%;
+    height: 40px;
+    border: 2px solid #0000008c;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    outline: none;
+    overflow: hidden;
+    padding-left: 20px;
+}
+
+.account {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+    gap: 30px;
+    margin-top: -200px;
+}
+
+.inputBox {
+    position: relative;
+    width: 250px;
+}
+
+.inputBox input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: #1d2b3a;
+    border-radius: 5px;
+    outline: none;
+    color: #fff;
+    font-size: 1em;
+    transition: .5s;
+}
+
+.inputBox span {
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.25);
+    text-transform: uppercase;
+    transition: .5s;
+}
+
+.inputBox input:valid~span,
+.inputBox input:focus~span {
+    color: #d5dddc;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    /* background: #1d2b3a; */
+    border-right: 1px solide #d5dddc;
+    border-left: 1px solide #d5dddc;
+    letter-spacing: 0.2em;
+}
+
+.inputBox input:valid~span,
+.inputBox input:focus~span {
+    background: #d5dddc;
+    color: #1d2b3a;
+    border-radius: 2px;
+}
 
 
+.inputBox input:valid,
+.inputBox input:focus {
+    border: 1px solid #d5dddc;
+}
+
+.tableBtn{
+    background: none;
+    border:none;
+    font-size: 16px;
+    margin-left: 30px;
+}
+
+.tableBtn:hover{
+    font-size: 18px;
+    margin-left: 20px;
 }
