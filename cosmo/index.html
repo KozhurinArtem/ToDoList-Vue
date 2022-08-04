@@ -25,56 +25,50 @@
                 </div>
 
                 <div class="nav">
-                     <div class="btn btn-s" 
-                    :class="{userName}"
-                    >
-                    <span></span> Добро пожаловать<br>{{FirstName}} {{LastName}}!</div> 
-                    <a class="btn" href="#" 
-                    @click="exit()"
-                    :class="{exitHidden}"
-                    >
+                    <div class="btn btn-s" :class="{userName}">
+                        <span></span> Добро пожаловать<br>{{FirstName}} {{LastName}}!</div>
+                    <a class="btn" href="#" @click="exit()" :class="{exitHidden}">
 
-                    <span></span>Закончить </a>
+                        <span></span>Закончить </a>
 
                 </div>
             </div>
 
             <!--   Приветствие  -->
-            <div class="open "  >
-                <a class="btn" 
-                href="#" 
-                @click="start(), toggleAcc()"
-                :class="{openHidden}"
-                
-                >
-                <span></span>Добро пожаловать! </a>
+            <div class="open ">
+                <a class="btn" href="#" @click="start(), toggleAcc()" :class="{openHidden}">
+                    <span></span>Добро пожаловать! </a>
 
             </div>
             <!--   Меню авторизации  -->
             <div class="account" v-if="accountV">
                 <div class="inputBox">
-                    <input type="text" required="required" 
-                    v-model="FirstName"
-                    >
+                    <input type="text" required="required" v-model="FirstName">
                     <span>First Name</span>
                 </div>
                 <div class="inputBox">
-                    <input type="text" required="required" 
-                    v-model="LastName"
-                    >
+                    <input type="text" required="required" v-model="LastName">
                     <span>Last Name</span>
                 </div>
-                <a class="btn" href="#" 
-                @click="login"
-                ><span></span> Поехали</a>
+
+            </div>
+            <div class="login" :class="{loginNone}">
+                <a class="btn" href="#" @click="login"><span></span> Поехали</a>
             </div>
 
             <!--   Поле задач  -->
-              <div class="content__inner"
-              :class="{table}">
-                <input class="input" type="text">
-                <button class="tableBtn">ДОБАВИТЬ</button>
-            </div>  
+            <div class="content__inner" :class="{table}">
+                <input class="input" type="text" :value="valueInput" @input="handleInput" @keypress.enter="addNote">
+                <button class="tableBtn" @click="addNote"><span></span> ДОБАВИТЬ</button>
+                <div class="counter">{{counter = notes.length}}</div>
+                <ul class="list">
+                    <li class="list__item" v-for="(note, index) in notes" :key="note.id">
+                        {{note.title}}
+                        <button class="removeBtn" @click="removeBtn(index)"><span></span> Удалить</button>
+
+                    </li>
+                </ul>
+            </div>
 
         </div>
     </section>
@@ -100,7 +94,7 @@
     <script src="./js/app.js"></script>
     <script>
         $(document).ready(function (e) {
-            $('.btn').on('mouseenter', function (e) {
+            $('.btn, .tableBtn').on('mouseenter', function (e) {
                 x = e.pageX - $(this).offset().left;
                 y = e.pageY - $(this).offset().top;
                 $(this).find('span').css({
@@ -109,7 +103,7 @@
                 })
 
             })
-            $('.btn').on('mouseout', function (e) {
+            $('.btn, .tableBtn').on('mouseout', function (e) {
                 x = e.pageX - $(this).offset().left;
                 y = e.pageY - $(this).offset().top;
                 $(this).find('span').css({
