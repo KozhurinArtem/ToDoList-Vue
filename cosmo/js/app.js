@@ -11,13 +11,46 @@ Vue.createApp({
         loginNone: true,
         table: true,
         notes: [],
-        valueInput: ''
+        valueInput: '',
+        float: true,
+        Welcome: 'Добро пожаловать',
+        Start: 'Поехали',
+        End: 'Закончить',
+        Add: 'Добавить',
+        Remove: 'Удалить',
+        FirstN: 'Имя',
+        LastN: 'Фамилия',
+        Ru: true,
+        
+
         
 
 
     }),
     methods: {
 
+        Eng(){
+            this.Ru = false
+            this.Welcome = 'Welcome!'  
+            this.Start = 'Let`s go' 
+            this.End =  'End'
+            this.Add =  'Add'     
+            this.Remove =  'Remove'
+            this.FirstN =  'FirstName'     
+            this.LastN =  'Lastname'    
+        },
+
+        Rus(){
+            this.Ru = true
+            this.Welcome = 'Добро пожаловать'  
+            this.Start = 'Поехали' 
+            this.End =  'Закончить'
+            this.Add =  'Добавить'     
+            this.Remove =  'Удалить'     
+            this.FirstN =  'Имя'     
+            this.LastN =  'Фамилия' 
+    
+            },
 
 
         start(){
@@ -25,6 +58,7 @@ Vue.createApp({
             this.openHidden = true
             this.exitHidden = false
             this.loginNone = false
+            this.float = false
 
 
         },
@@ -38,6 +72,8 @@ Vue.createApp({
             this.table = true
             this.FirstName = ''
             this.LastName = ''
+            this.loginNone = true
+            this.float= true
 
         },
         toggleAcc(){
@@ -46,6 +82,7 @@ Vue.createApp({
 
         login(){
             if(this.FirstName === '' && this.LastName ===''){ this.FirstName = 'Гость'}
+            if(this.Ru === false ) {this.FirstName = 'guest' }
             if (this.accountV === true &&  this.openHidden === false) {
                 this.accountV = true} else { this.accountV = false}
                 this.userName = false

@@ -7,27 +7,33 @@
 }
 
 a {
-    color: white;
+    /* color: white; */
     text-decoration: none;
+    color:  #aaaaaa;
 }
 
 ul {
     list-style: none;
 }
+[v-cloak] {
+    display: none;
+}
+
 
 .container {
     position: absolute;
-    width: 1170px;
-    min-height: 100vh;
-    margin-top: 50px;
-    margin-left: 200px;
+    width: 80%;
+
+    margin-top: 5%;
+    margin-left: 10%;
 
     font-family: 'Roboto', sans-serif;
 }
 
-[v-cloak] {
-    display: none;
+.float{
+float: right;
 }
+
 
 
 
@@ -35,7 +41,8 @@ ul {
 .btn {
     position: relative;
 
-    padding: 20px 30px;
+    padding: 20px 20px;
+    font-size: 16px;
     border: 2px solid white;
     margin: 10px;
     display: inline-block;
@@ -67,15 +74,26 @@ ul {
     z-index: -1;
 }
 
+
+
 .btn:hover span {
     width: 600px;
     height: 600px;
 }
 
 .btn-s {
-    padding: 10.5px 30px;
+    padding: 11px 11px;
 }
 
+@media (max-width: 900px) {
+    .btn {
+        padding: 20px 20px;
+        font-size: 10px;
+    }
+    .btn-s {
+            padding: 13px 11px;
+        }
+    }
 
 .header {
     display: flex;
@@ -85,8 +103,7 @@ ul {
 
 .open {
     /* position: absolute; */
-    margin-top: 25vh;
-    max-height: 200px;
+    margin-top: 30%;
     text-align: center;
     transition: .9s;
 
@@ -104,6 +121,67 @@ ul {
 
 
 
+.translate{
+    position: relative;
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 2px solid white;
+    margin: 10px;
+    align-items: end;
+    text-decoration: none;
+    color: white;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: .8s;
+    overflow: hidden;
+    
+
+}
+
+.translate:hover {
+    color: rgb(32, 53, 63);
+}
+
+.translate span {
+    position: absolute;
+    display: block;
+    width: 0px;
+    height: 0px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: white;
+    transition: width .9s, height .9s;
+    z-index: -1;
+}
+
+
+
+.translate:hover span {
+    width: 600px;
+    height: 600px;
+}
+
+.En{
+    padding-top: 5px;
+    margin-top: 5px;
+    border-top: 2px solid white;
+    cursor: pointer;
+}
+
+.Ru{
+    cursor: pointer;
+}
+
+.translate:hover .En {
+    border-top: 2px solid black;
+}
+
+
+
+.Ru{}
+
+
+
 .content {
     position: relative;
 }
@@ -115,7 +193,7 @@ ul {
     letter-spacing: 5px;
     /* display: none; */
     transition: .5s;
-
+    height: 84px;
 }
 
 
@@ -123,12 +201,10 @@ ul {
 
 
 .content__inner {
-    /* display: flex; */
     position: relative;
-    height: 100%;
-    margin-top: -100px;
+    margin-top: -20%;
     text-align: center;
-    align-items: center;
+    /* align-items: center; */
     background: rgba(255, 255, 255, 0.90);
     ;
     color: #000;
@@ -136,7 +212,7 @@ ul {
     border-radius: 20px;
     box-shadow: 15px 15px 15px rgb(58, 57, 57);
     padding-top: 20px;
-    /* z-index: -10; */
+
 }
 
 .input {
